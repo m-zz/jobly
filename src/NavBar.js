@@ -9,7 +9,7 @@ function NavBar({ user, updateUser }) {
 
   if(user){
     return (
-      <nav>
+      <nav className="NavBar">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/companies">Companies</NavLink>
         <NavLink to="/jobs">Jobs</NavLink>

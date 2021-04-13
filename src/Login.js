@@ -3,9 +3,9 @@ import JoblyApi from './api'
 
 function Login({user, updateUser}) {
 
-  function login(data){
-    const logUser = JoblyApi.login(data)
-    updateUser(logUser)
+  async function login(data) {
+    const { token } = await JoblyApi.login(data)
+    updateUser(token);
   }
 
   return (

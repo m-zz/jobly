@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-function Form({ formElements, updateData }) {
+function Form({ defaultData = {}, formElements, updateData }) {
   const history = useHistory();
-  const defaultData = formElements.reduce((o, p) => ({ ...o, [p]: "" }), {});
+  defaultData = defaultData || formElements.reduce((o, p) => ({ ...o, [p]: "" }), {});
   const [formData, setFormData] = useState(defaultData);
   const [valid, setValid] = useState(true);
 
