@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import "./NavBar.css";
 
-function NavBar({ user, updateUser }) {
+function NavBar({ user, removeUser }) {
 
   function logout() {
-    updateUser(null);
+    removeUser();
   }
 
   if(user){
     return (
-      <nav className="NavBar">
+      <nav className='NavBar'>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/companies">Companies</NavLink>
         <NavLink to="/jobs">Jobs</NavLink>

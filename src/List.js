@@ -6,8 +6,8 @@ function List({ list, type }) {
   return (
     <div className="List">
       {type === "company"
-        ? list.map(l => <CompanyCard {...l} />)
-        : list.map(l => <JobCard {...l} />)
+        ? list.map(l => <CompanyCard key={l.handle} {...l} />)
+        : list.map(l => <JobCard key={l.id} {...l} />)
       }
     </div>
   );

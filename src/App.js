@@ -1,8 +1,13 @@
 import './App.css';
 import JoblyApp from './JoblyApp';
+import {BrowserRouter} from 'react-router-dom';
 
 function App() {
-  return <JoblyApp/>;
+  return (
+    <BrowserRouter>
+      <JoblyApp/>
+    </BrowserRouter>
+  )
 }
 
 export default App;

@@ -1,31 +1,33 @@
 import { useState, useEffect } from "react";
-import Search from "./Search";
+import Form from "./Form";
 import List from "./List";
 import JoblyApi from "./api";
 
 function Jobs({ user }) {
   const [jobs, setJobs] = useState();
 
-  function submitSearch(searchTerm) {
-    //do something with searchterm
-  }
 
   useEffect(() => {
-    console.log("in useEffect");
     async function getJobs() {
       const resp = await JoblyApi.getAllJobs();
-      console.log(resp);
       setJobs(resp);
     }
     getJobs();
   }, []);
 
+  async function submitSearch(searchTerms) {
+    // search by equity and salary
+    const resp = await JoblyApi.getAllJobs(searchTerms);
+    setJobs(resp);
+  }
 
+  // maybe rework our form to accept an array of these: { name: label: type: value: validation:}
   return (
     <div className="Jobs">
       {jobs && (
         <div>
-          <Search submitSearch={submitSearch} />
+          <Form updateData={submitSearch} formElements={["title", "minSalary", "hasEquity"]}
+            defaultData={{ title: "", minSalary: "1000000", hasEquity: "true" }} />
           <List list={jobs} type="job" />
         </div>
       )}

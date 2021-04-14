@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router";
 
-function Form({ defaultData = {}, formElements, updateData }) {
+function Form({ defaultData, formElements, updateData }) {
   const history = useHistory();
   defaultData = defaultData || formElements.reduce((o, p) => ({ ...o, [p]: "" }), {});
   const [formData, setFormData] = useState(defaultData);
@@ -12,8 +12,8 @@ function Form({ defaultData = {}, formElements, updateData }) {
     evt.preventDefault();
     if (valid) {
       updateData(formData);
-      setFormData(null);
-      history.push('/')
+      setFormData(defaultData);
+      // history.push('/')
     }
   }
 
@@ -21,6 +21,7 @@ function Form({ defaultData = {}, formElements, updateData }) {
     const { name, value } = evt.target;
     setFormData(d => ({ ...d, [name]: value }));
   }
+  console.log(formData)
 
   function validate() {
     setValid(!Object.values(formData).includes(""));
@@ -30,9 +31,9 @@ function Form({ defaultData = {}, formElements, updateData }) {
     <div>
       <form onSubmit={handleSubmit} className="Form">
         {formElements.map(l => (
-          <div>
+          <div key={l}>
             <label htmlFor={l}>{l[0].toUpperCase()+l.slice(1)}</label><br />
-            <input onChange={handleChange} type="text" name={l} value={formData.l} />
+            <input onChange={handleChange} type="text" name={l} value={formData[l]}/>
           </div>))}
           <button type="submit">Submit</button>
           {!valid && <p style={{ color: "red" }}>Not Valid!</p>}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Search from './Search';
+import Form from './Form';
 import List from './List';
 import JoblyApi from './api';
 
@@ -8,23 +8,27 @@ function Companies({user}) {
   const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
-    console.log("in useEffect")
     async function getCompanies() {
       const resp = await JoblyApi.getAllCompanies();
-      console.log(resp);
       setCompanies(resp);
     }
     getCompanies();
   }, [])
 
-  function submitSearch(searchTerm) {
-    //do something with searchterm
+  async function submitSearch(searchTerms) {
+    const resp = await JoblyApi.getAllCompanies(searchTerms);
+    console.log(resp)
+    setCompanies(resp);
   }
   
   return (
     <div className="Companies">
-      {companies && (<div><Search submitSearch={submitSearch}/>
-      <List list={companies} type="company"/></div>)}
+      {companies && (
+      <div>
+          <Form updateData={submitSearch} formElements={["name", "minEmployees", "maxEmployees"]}
+            defaultData={{ name: "", minEmployees: "0", maxEmployees: "10000000" }} />
+          <List list={companies} type="company"/>
+      </div>)}
       
     </div>
   );
