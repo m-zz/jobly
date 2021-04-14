@@ -6,18 +6,23 @@ import Profile from "./Profile";
 import Login from "./Login";
 import Home from "./Home";
 import CompanyDetails from "./CompanyDetails";
+import { useContext } from "react";
+import UserContext from "./UserContext";
 
-function Routes({ user, updateUser }) {
+function Routes() {
+  const { user } = useContext(UserContext);
+
+  // !!how does our redirect look?
 
   return (
     <Switch>
-      <Route path="/login">{() => user ? <Login updateUser={updateUser} /> : <Redirect to="/" />}</Route>
-      <Route path="/register"><Register user={user} updateUser={updateUser} /></Route>
-      <Route path="/companies/:handle"><CompanyDetails user={user} /></Route>
-      <Route path="/companies"><Companies user={user} /></Route>
-      <Route path="/jobs"><Jobs user={user} /></Route>
-      <Route path="/profile"><Profile user={user} /></Route>
-      <Route path="/"><Home user={user} /></Route>
+      <Route path="/login"><Login /></Route>
+      <Route path="/register"><Register /></Route>
+      <Route path="/companies/:handle">{() => user ? <CompanyDetails /> : <Redirect to="/" />}</Route>
+      <Route path="/companies">{() => user ? <Companies /> : <Redirect to="/" />}</Route>
+      <Route path="/jobs">{() => user ? <Jobs /> : <Redirect to="/" />}</Route>
+      <Route path="/profile">{() => user ? <Profile /> : <Redirect to="/" />}</Route>
+      <Route path="/"><Home /></Route>
     </Switch>
   );
 }

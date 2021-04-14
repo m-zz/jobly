@@ -1,6 +1,10 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import UserContext from './UserContext';
 
-function Home({user}) {
+function Home() {
+  const { user } = useContext(UserContext)
+
   return (
     <div className="Home">
       <h1>Jobly</h1>

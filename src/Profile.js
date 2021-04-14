@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
-import { Redirect } from 'react-router';
+import { useContext, useEffect, useState } from 'react';
 import JoblyApi from './api';
 import Form from './Form';
+import UserContext from './UserContext';
 
-function Profile({ user }) {
+function Profile() {
   const [updated, setUpdated] = useState(false);
   const [userDetails, setUserDetails] = useState(null);
+  const { user } = useContext(UserContext)
 
   useEffect( ()=> {
     async function getDetails() {
@@ -15,8 +16,6 @@ function Profile({ user }) {
     }
     getDetails()
   },[])
-  
-  if (!user) return <Redirect to='login' />
 
 
   function handleUpdate(formData) {

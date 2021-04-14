@@ -1,7 +1,10 @@
 import Form from "./Form";
 import JoblyApi from "./api"
+import { useContext } from "react";
+import UserContext from "./UserContext";
 
-function Register({ updateUser }) {
+function Register() {
+  const {updateUser} = useContext(UserContext)
   
   async function register(data) {
     const { token } = await JoblyApi.register(data);

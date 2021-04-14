@@ -4,7 +4,7 @@ import List from './List';
 import JoblyApi from './api';
 import { Redirect } from 'react-router';
 
-function Companies({user}) {
+function Companies() {
   
   const [companies, setCompanies] = useState([]);
 
@@ -21,7 +21,6 @@ function Companies({user}) {
     setCompanies(resp);
   }
 
-  if(!user) return <Redirect to='/login'/>
   
   return (
     <div className="Companies">

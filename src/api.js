@@ -12,14 +12,9 @@ const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 class JoblyApi {
   // the token for interactive with the API will be stored here.
-
-
   static token;
 
-
-
   static async request(endpoint, data = {}, method = "get") {
-    console.log('token: ', JoblyApi.token)
     console.log("API Call:", endpoint, data, method);
 
     const url = `${BASE_URL}/${endpoint}`;
@@ -43,6 +38,10 @@ class JoblyApi {
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
     return res.company;
+  }
+
+  static async applyToJob(username, jobId) {
+    await this.request(`users/${username}/jobs/${jobId}`, null, "post")
   }
 
   // static async request(endpoint, data = {}, method = "get")
@@ -74,7 +73,7 @@ class JoblyApi {
     return res;
   }
   static async update(data, username) {
-    await this.request(`users/${username}`, data, "patch");
+    this.request(`users/${username}`, data, "patch");
   }
 
   // obviously, you'll add a lot here ...

@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import JoblyApi from "./api";
 import List from './List';
 
-function CompanyDetails({ user }) {
+function CompanyDetails() {
   const { handle } = useParams();
   const [cDetails, setCDetails] = useState(null);
   // async function to grab jobs for company
@@ -12,7 +12,6 @@ function CompanyDetails({ user }) {
     //axios get jobs
     async function validCompanyGetDetails() {
       const company = await JoblyApi.getCompany(handle);
-      console.log(company)
       if (company) {
         setCDetails(company);
       }
@@ -20,7 +19,6 @@ function CompanyDetails({ user }) {
     validCompanyGetDetails();
   }, []);
 
-  console.log(cDetails)
 
   return (
     <div>
