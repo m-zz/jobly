@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Redirect } from 'react-router';
 import JoblyApi from './api';
 import Form from './Form';
 
@@ -15,7 +16,8 @@ function Profile({ user }) {
     getDetails()
   },[])
   
-  
+  if (!user) return <Redirect to='login' />
+
 
   function handleUpdate(formData) {
     JoblyApi.update(formData, user.username);

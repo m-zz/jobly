@@ -7,16 +7,20 @@ import "./JoblyApp.css";
 
 function JoblyApp() {
   const history = useHistory();
-  const [user, setUser] = useState(null);
+  // !!
+  const initToken = localStorage.getItem('token');
+  const [user, setUser] = useState(initToken? {token: initToken, ...jwt.decode(initToken)} : null);
 
   function updateUser(token) {
     setUser({ token, ...jwt.decode(token) });
     history.push('/');
+    localStorage.setItem('token', token);
   }
 
   function removeUser() {
     setUser(null);
     history.push('/');
+    localStorage.clear();
   }
 
   return (

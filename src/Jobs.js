@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Form from "./Form";
 import List from "./List";
 import JoblyApi from "./api";
+import { Redirect } from "react-router";
 
 function Jobs({ user }) {
   const [jobs, setJobs] = useState();
@@ -20,6 +21,10 @@ function Jobs({ user }) {
     const resp = await JoblyApi.getAllJobs(searchTerms);
     setJobs(resp);
   }
+
+  // !! is this the best way to do this?
+  if (!user) return <Redirect to='/login' />
+
 
   // maybe rework our form to accept an array of these: { name: label: type: value: validation:}
   return (

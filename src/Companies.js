@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Form from './Form';
 import List from './List';
 import JoblyApi from './api';
+import { Redirect } from 'react-router';
 
 function Companies({user}) {
   
@@ -19,6 +20,8 @@ function Companies({user}) {
     const resp = await JoblyApi.getAllCompanies(searchTerms);
     setCompanies(resp);
   }
+
+  if(!user) return <Redirect to='/login'/>
   
   return (
     <div className="Companies">
