@@ -3,6 +3,7 @@ import NavBar from "./NavBar";
 import Routes from "./Routes";
 import jwt from 'jsonwebtoken';
 import { useHistory } from "react-router";
+import "./JoblyApp.css";
 
 function JoblyApp() {
   const history = useHistory();
@@ -21,7 +22,9 @@ function JoblyApp() {
   return (
     <div className="JoblyApp">
       <NavBar removeUser={removeUser} user={user} />
-      <Routes updateUser={updateUser} user={user} />
+      <div className="JoblyContent">
+        <Routes updateUser={updateUser} user={user} />
+      </div>
     </div>
   );
 }

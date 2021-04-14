@@ -1,0 +1,59 @@
+.JoblyApp {
+  text-align: center;
+}
+
+.JoblyContent {
+  margin-top: 100px;
+}
+
+.btn {
+  margin: 0 10px;
+}
+
+.default-form {
+  width: 300px;
+  margin: auto;
+  text-align: left;
+}
+
+.Header {
+  text-align: left;
+  margin-left: 350px;
+}
+
+.List {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.List a {
+  text-decoration: none;
+  color: inherit;
+  line-height: 2;
+}
+
+.List img {
+  width: 10%;
+  float: right;
+}
+
+.List .btn {
+  float: right;
+}
+
+.CompanyCard, .JobCard {
+  width: 80%;
+  border: 1px solid black;
+  border-radius: .5em;
+  text-align: left;
+  margin: 10px;
+  padding: 10px;
+}
+
+.CompanyCard:hover {
+  color: rgb(6, 16, 135);
+  box-shadow: 2px 2px #888888;
+}
+
+

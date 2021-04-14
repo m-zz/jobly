@@ -24,6 +24,7 @@ function Jobs({ user }) {
   // maybe rework our form to accept an array of these: { name: label: type: value: validation:}
   return (
     <div className="Jobs">
+      {/* Add spinner */}
       {jobs && (
         <div>
           <Form updateData={submitSearch} formElements={["title", "minSalary", "hasEquity"]}

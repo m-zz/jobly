@@ -1,19 +1,27 @@
 .NavBar {
-  background-color: #ef6b66;
+  background-color: rgb(255, 255, 255);
   text-align: center;
-  font-weight: bold;
+  height: 60px;
+  border-bottom: 1px solid black;
 }
 .NavBar a {
-  padding: 1.5em 0;
-  width: 10em;
+  padding: 1em 0;
+  width: 7em;
   display: inline-block;
-  color: white;
+  color: #3d79e1;
   text-decoration: none;
-  font-family: serif;
+  font-family: sans-serif;
 }
+.NavBar .home {
+  float: left;
+}
+
+.NavBar .NavBarRight {
+  float: right;
+}
+
 .NavBar a:hover {
-  background-color: purple;
-  color: white !important;
+  color: #2e5cac !important;
 }
 .NavBar a.active {
   font-weight: bold;

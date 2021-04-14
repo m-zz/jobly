@@ -10,7 +10,7 @@ function Login({user, updateUser}) {
 
   return (
     <div className="Login">
-      <h2>Login</h2>
+      <h2 className="Header">Login</h2>
       <Form updateData={login} formElements={['username', 'password']}/>
     </div>
   );

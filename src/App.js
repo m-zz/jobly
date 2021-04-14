@@ -1,4 +1,3 @@
-import './App.css';
 import JoblyApp from './JoblyApp';
 import {BrowserRouter} from 'react-router-dom';
 

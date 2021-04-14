@@ -8,7 +8,7 @@ function JobCard({ title, companyName, salary, equity }) {
         <p>Salary: {salary}</p>
         <p>Equity: {equity}</p>
       </small>
-      <button>Apply</button>
+      <button className="btn btn-danger">Apply</button>
     </div>
   );
 }

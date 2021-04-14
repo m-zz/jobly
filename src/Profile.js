@@ -9,7 +9,7 @@ function Profile({ user }) {
   useEffect( ()=> {
     async function getDetails() {
 
-      const userResults =  await JoblyApi.getUser(user)
+      const userResults = await JoblyApi.getUser(user)
       setUserDetails(userResults);
     }
     getDetails()
@@ -18,8 +18,7 @@ function Profile({ user }) {
   
 
   function handleUpdate(formData) {
-    console.log(user.token)
-    JoblyApi.update(formData);
+    JoblyApi.update(formData, user.username);
     setUpdated(true);
   }
 
@@ -29,7 +28,7 @@ function Profile({ user }) {
         ? (
           <div className="Profile">
             {updated && <p style={{ color: "blue" }}>updated!</p>}
-            <h1>Profile</h1>
+            <h1 className="Header">Profile</h1>
             <b>Username</b>
             <p>{userDetails.username}</p>
             <Form
@@ -42,8 +41,7 @@ function Profile({ user }) {
                 password: ""
               }}
             />
-          </div>
-        )
+          </div>)
         : <p>None</p>
       }
     </div>

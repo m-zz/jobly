@@ -17,12 +17,12 @@ function Companies({user}) {
 
   async function submitSearch(searchTerms) {
     const resp = await JoblyApi.getAllCompanies(searchTerms);
-    console.log(resp)
     setCompanies(resp);
   }
   
   return (
     <div className="Companies">
+      {/* make ternary for loading spinner */}
       {companies && (
       <div>
           <Form updateData={submitSearch} formElements={["name", "minEmployees", "maxEmployees"]}

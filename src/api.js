@@ -73,8 +73,8 @@ class JoblyApi {
     JoblyApi.token = res.token;
     return res;
   }
-  static async update(data) {
-    await this.request(`users/${data.username}`, data, "patch");
+  static async update(data, username) {
+    await this.request(`users/${username}`, data, "patch");
   }
 
   // obviously, you'll add a lot here ...

@@ -12,7 +12,7 @@ function Form({ defaultData, formElements, updateData }) {
     evt.preventDefault();
     if (valid) {
       updateData(formData);
-      setFormData(defaultData);
+      // setFormData(defaultData);
       // history.push('/')
     }
   }
@@ -21,21 +21,37 @@ function Form({ defaultData, formElements, updateData }) {
     const { name, value } = evt.target;
     setFormData(d => ({ ...d, [name]: value }));
   }
-  console.log(formData)
 
   function validate() {
     setValid(!Object.values(formData).includes(""));
   }
 
+  function camelCaseToLabel(str) {
+    let strArr = str.split('');
+    for (let i in strArr){
+      if (strArr[i].toUpperCase() === strArr[i]) {
+        strArr[i] = " " + strArr[i];
+      }
+    }
+    return strArr[0].toUpperCase() + strArr.join("").slice(1);
+  }
+
   return (
-    <div>
+    <div className="default-form">
       <form onSubmit={handleSubmit} className="Form">
         {formElements.map(l => (
-          <div key={l}>
-            <label htmlFor={l}>{l[0].toUpperCase()+l.slice(1)}</label><br />
-            <input onChange={handleChange} type="text" name={l} value={formData[l]}/>
+          <div key={l} className="mb-2">
+            <label className="form-label" htmlFor={l}>
+              {camelCaseToLabel(l)}
+            </label><br />
+            <input
+              className="form-control"
+              onChange={handleChange}
+              type={l === "password" ? "password" : "text"}
+              name={l}
+              value={formData[l]} />
           </div>))}
-          <button type="submit">Submit</button>
+          <button className="btn btn-primary" type="submit">Submit</button>
           {!valid && <p style={{ color: "red" }}>Not Valid!</p>}
       </form>
     </div>
