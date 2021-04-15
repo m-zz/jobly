@@ -239,6 +239,22 @@ class User {
            VALUES ($1, $2)`,
         [jobId, username]);
   }
+
+  static async unapplyToJob(username, jobId) {
+    const preCheck = await db.query(
+          `SELECT *
+           FROM applications
+           WHERE job_id = $1 AND username = $2`, [jobId, username]);
+    const job = preCheck.rows[0];
+
+    if (!job) {
+      throw new NotFoundError(`No application: ${jobId}, ${username}`);
+    }
+    await db.query(
+          `DELETE FROM applications
+           WHERE job_id = $1 AND username = $2`,
+        [jobId, username]);
+  }
 }
 
 

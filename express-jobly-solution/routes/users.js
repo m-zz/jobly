@@ -137,5 +137,15 @@ router.post("/:username/jobs/:id", ensureCorrectUserOrAdmin, async function (req
   }
 });
 
+router.delete("/:username/jobs/:id", ensureCorrectUserOrAdmin, async function (req, res, next) {
+  try {
+    const jobId = +req.params.id;
+    await User.unapplyToJob(req.params.username, jobId);
+    return res.json({ unapplied: jobId });
+  } catch (err) {
+    console.log("in the routes")
+    return next(err);
+  }
+});
 
 module.exports = router;

@@ -43,6 +43,9 @@ class JoblyApi {
   static async applyToJob(username, jobId) {
     await this.request(`users/${username}/jobs/${jobId}`, null, "post")
   }
+  static async unapply(username, jobId) {
+    await this.request(`users/${username}/jobs/${jobId}`, null, "delete")
+  }
 
   // static async request(endpoint, data = {}, method = "get")
 
