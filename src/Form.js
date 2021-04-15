@@ -5,8 +5,9 @@ function Form({ defaultData, formElements, updateData, live = false }) {
   defaultData = defaultData || formElements.reduce((o, p) => ({ ...o, [p]: "" }), {});
   const [formData, setFormData] = useState(defaultData);
   const [valid, setValid] = useState(true);
-  const debounce = useCallback(_.debounce(updateData, 800), [updateData]);
 
+  const debounce = useCallback(_.debounce(updateData, 800), [updateData]);
+  
   function handleSubmit(evt) {
     validate();
     if (evt) evt.preventDefault();

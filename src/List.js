@@ -2,20 +2,19 @@ import CompanyCard from './CompanyCard';
 import JobCard from './JobCard';
 import { useState } from 'react';
 
-function List({ list, type, other }) {
+function List({ list, type, other, iPerPg=20 }) {
 
   const [page, setPage] = useState(1);
+
+  
 
   return (
     <div>
       <div className="List">
-        {type === "company"
-          ? list
-              .slice((page - 1) * 20, page * 20)
-              .map(l => <CompanyCard key={l.handle} {...l} />)
-          : list
-              .slice((page - 1) * 20, page * 20)
-              .map(l => <JobCard key={l.id} {...l} apps={other} />)}
+        {list.slice((page - 1) * 20, page * 20).map(l =>  type === "company" 
+          ? (<CompanyCard key={l.handle} {...l} />) 
+          : (<JobCard key={l.id} {...l} apps={other} />)
+        )}
       </div>
         <div>
           {page > 1 && <button

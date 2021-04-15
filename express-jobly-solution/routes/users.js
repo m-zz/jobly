@@ -143,7 +143,6 @@ router.delete("/:username/jobs/:id", ensureCorrectUserOrAdmin, async function (r
     await User.unapplyToJob(req.params.username, jobId);
     return res.json({ unapplied: jobId });
   } catch (err) {
-    console.log("in the routes")
     return next(err);
   }
 });

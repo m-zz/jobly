@@ -6,17 +6,15 @@ function JobCard({ id, title, companyName, salary, equity, apps }) {
   const { user } = useContext(UserContext);
 
   function handleClick(evt) {
-    
-    if (evt.target.classList.contains("applied")) {
+    //toggle apply
+    if (!evt.target.classList.contains("btn-danger")) {
       JoblyApi.unapply(user.username, id);
-      evt.target.innerHTML = "Apply"
-      evt.target.classList.replace("btn-success", "btn-danger");
+      evt.target.innerHTML = "Apply";
     } else {
       JoblyApi.applyToJob(user.username, id);
       evt.target.innerHTML = "Applied";
-      evt.target.classList.replace("btn-danger", "btn-success");
     }
-    evt.target.classList.toggle("applied");
+    evt.target.classList.toggle("btn-danger");
   }
 
   return ( 
@@ -28,7 +26,7 @@ function JobCard({ id, title, companyName, salary, equity, apps }) {
         <p>Equity: {equity}</p>
       </small>
       <button onClick={handleClick}
-        className={apps.has(id) ? "btn btn-success applied" : "btn btn-danger"}>{apps.has(id) ? "Applied" : "Apply"}</button>
+        className={apps.has(id) ? "btn btn-success" : "btn btn-success btn-danger"}>{apps.has(id) ? "Applied" : "Apply"}</button>
     </div>
   );
 }

@@ -245,9 +245,9 @@ class User {
           `SELECT *
            FROM applications
            WHERE job_id = $1 AND username = $2`, [jobId, username]);
-    const job = preCheck.rows[0];
+    const application = preCheck.rows[0];
 
-    if (!job) {
+    if (!application) {
       throw new NotFoundError(`No application: ${jobId}, ${username}`);
     }
     await db.query(
