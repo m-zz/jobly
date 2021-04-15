@@ -9,12 +9,14 @@ function JobCard({ id, title, companyName, salary, equity, apps }) {
     
     if (evt.target.classList.contains("applied")) {
       JoblyApi.unapply(user.username, id);
-      evt.target.innerHTML = "Apply";
+      evt.target.innerHTML = "Apply"
+      evt.target.classList.replace("btn-success", "btn-danger");
     } else {
       JoblyApi.applyToJob(user.username, id);
       evt.target.innerHTML = "Applied";
+      evt.target.classList.replace("btn-danger", "btn-success");
     }
-    evt.target.classList.toggle("applied")
+    evt.target.classList.toggle("applied");
   }
 
   return ( 
@@ -26,7 +28,7 @@ function JobCard({ id, title, companyName, salary, equity, apps }) {
         <p>Equity: {equity}</p>
       </small>
       <button onClick={handleClick}
-        className={apps.has(id) ? "btn btn-danger applied" : "btn btn-danger"}>{apps.has(id) ? "Applied" : "Apply"}</button>
+        className={apps.has(id) ? "btn btn-success applied" : "btn btn-danger"}>{apps.has(id) ? "Applied" : "Apply"}</button>
     </div>
   );
 }

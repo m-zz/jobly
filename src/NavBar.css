@@ -1,8 +1,8 @@
 .NavBar {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(220, 220, 220);
   text-align: center;
-  height: 60px;
-  border-bottom: 1px solid black;
+  height: 50px;
+  border-bottom: 1px solid #3d79e1;
 }
 .NavBar a, .logout {
   padding: 1em 0;
