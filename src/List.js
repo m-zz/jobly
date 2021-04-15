@@ -18,19 +18,15 @@ function List({ list, type, other }) {
               .map(l => <JobCard key={l.id} {...l} apps={other} />)}
       </div>
         <div>
-          {page > 1 && (
-            <button
+          {page > 1 && <button
               className="btn btn-secondary"
-              onClick={() => setPage(p => p - 1)}
-            >
+              onClick={() => setPage(p => p - 1)}>
               Back
-            </button>
-          )}
+            </button>}
           <span>Page {page}</span>
           {page * 20 <= list.length && <button
             className="btn btn-secondary"
-            onClick={() => setPage(p => p + 1)}
-          >
+            onClick={() => setPage(p => p + 1)}>
             Forward
             </button>}
       </div>

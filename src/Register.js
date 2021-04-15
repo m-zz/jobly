@@ -12,8 +12,8 @@ function Register() {
   }
   
   return (
-    <div className="Register">
-      <h2 className="Header">Sign Up</h2>
+    <div className="Register default-content">
+      <h2>Sign Up</h2>
       <Form
         updateData={register}
         formElements={["username", "password", "firstName", "lastName", "email"]} />

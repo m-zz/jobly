@@ -1,20 +1,30 @@
 import Form from "./Form";
 import JoblyApi from './api';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UserContext from "./UserContext";
 
 function Login() {
-  const {updateUser} = useContext(UserContext)
-
+  const { updateUser } = useContext(UserContext)
+  const [errorMsg, setErrorMsg] = useState("");
+ 
   async function login(data) {
-    const { token } = await JoblyApi.login(data);
-    updateUser(token);
+    try {
+      const { token } = await JoblyApi.login(data);
+      updateUser(token);
+    } catch (e) {
+      setErrorMsg(e[0]);
+    }
   }
 
   return (
-    <div className="Login">
-      <h2 className="Header">Login</h2>
-      <Form updateData={login} formElements={['username', 'password']} />
+    <div className="Login default-content">
+      <h2>Login</h2>
+      {errorMsg && (
+        <div class="alert alert-danger" role="alert">
+          {errorMsg}
+        </div>
+      )}
+      <Form updateData={login} formElements={["username", "password"]} />
     </div>
   );
 }

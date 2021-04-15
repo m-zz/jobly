@@ -35,8 +35,14 @@ function Jobs() {
       {/* Add spinner */}
       {jobs && (
         <div>
-          <Form updateData={submitSearch} formElements={["title", "minSalary", "hasEquity"]}
-            defaultData={{ title: "", minSalary: "1000000", hasEquity: "true" }} />
+          <div className="search-form">
+            <Form
+              updateData={submitSearch}
+              formElements={["title", "minSalary", "hasEquity"]}
+              defaultData={{ title: "", minSalary: "1000000", hasEquity: true }}
+              live={true}
+            />
+          </div>
           <List list={jobs} other={apps} type="job" />
         </div>
       )}

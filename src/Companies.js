@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import Form from './Form';
 import List from './List';
 import JoblyApi from './api';
-import { Redirect } from 'react-router';
 
 function Companies() {
   
@@ -26,9 +25,11 @@ function Companies() {
     <div className="Companies">
       {/* make ternary for loading spinner */}
       {companies && (
-      <div>
-          <Form updateData={submitSearch} formElements={["name", "minEmployees", "maxEmployees"]}
-            defaultData={{ name: "", minEmployees: "0", maxEmployees: "10000000" }} />
+        <div>
+          <div className="search-form">
+            <Form updateData={submitSearch} formElements={["name", "minEmployees", "maxEmployees"]}
+              defaultData={{ name: "", minEmployees: "0", maxEmployees: "10000000" }} live={true}/>
+          </div>
           <List list={companies} type="company"/>
       </div>)}
       

@@ -1,21 +1,30 @@
-import { useState } from "react";
-import { useHistory } from "react-router";
+import { useCallback, useEffect, useState } from "react";
+import _ from "lodash";
 
-function Form({ defaultData, formElements, updateData }) {
-  const history = useHistory();
+function Form({ defaultData, formElements, updateData, live = false }) {
   defaultData = defaultData || formElements.reduce((o, p) => ({ ...o, [p]: "" }), {});
   const [formData, setFormData] = useState(defaultData);
   const [valid, setValid] = useState(true);
+  const debounce = useCallback(_.debounce(updateData, 800), [updateData]);
 
   function handleSubmit(evt) {
     validate();
-    evt.preventDefault();
+    if (evt) evt.preventDefault();
     if (valid) {
       updateData(formData);
-      // setFormData(defaultData);
-      // history.push('/')
     }
   }
+
+  function handleLiveSubmit() {
+    validate();
+    if (valid) {
+      debounce(formData);
+    }
+  }
+
+  useEffect(() => {
+    if (live) handleLiveSubmit()
+  }, [formData])
 
   function handleChange(evt) {
     const { name, value } = evt.target;

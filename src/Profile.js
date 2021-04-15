@@ -27,9 +27,9 @@ function Profile() {
     <div>
       {userDetails
         ? (
-          <div className="Profile">
+          <div className="Profile default-content">
             {updated && <p style={{ color: "blue" }}>updated!</p>}
-            <h1 className="Header">Profile</h1>
+            <h1>Profile</h1>
             <b>Username</b>
             <p>{userDetails.username}</p>
             <Form

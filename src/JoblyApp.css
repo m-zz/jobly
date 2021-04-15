@@ -10,15 +10,23 @@
   margin: 0 10px;
 }
 
-.default-form {
+.default-content{
   width: 300px;
   margin: auto;
   text-align: left;
 }
 
-.Header {
+.search-form{
+  margin: auto;
   text-align: left;
-  margin-left: 350px;
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search-form div{
+  display: inline-block;
+  margin: 0 10px;
 }
 
 .List {
