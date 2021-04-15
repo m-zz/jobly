@@ -20,7 +20,7 @@ function NavBar() {
           <NavLink to="/companies">Companies</NavLink>
           <NavLink to="/jobs">Jobs</NavLink>
           <NavLink to="/profile">Profile</NavLink>
-          <a onClick={logout}>Logout</a>
+          <a className="logout" onClick={logout}>Logout</a>
         </div>
       </nav>
     );

@@ -4,7 +4,7 @@
   height: 60px;
   border-bottom: 1px solid black;
 }
-.NavBar a {
+.NavBar a, .logout {
   padding: 1em 0;
   width: 7em;
   display: inline-block;
@@ -23,6 +23,7 @@
 .NavBar a:hover {
   color: #2e5cac !important;
 }
+
 .NavBar a.active {
   font-weight: bold;
   color: black;

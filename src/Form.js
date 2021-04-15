@@ -23,7 +23,7 @@ function Form({ defaultData, formElements, updateData, live = false }) {
   }
 
   useEffect(() => {
-    if (live) handleLiveSubmit()
+    if (live && formData !== defaultData) handleLiveSubmit()
   }, [formData])
 
   function handleChange(evt) {
