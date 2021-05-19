@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import Routes from "./Routes";
 import jwt from 'jsonwebtoken';
 import { useHistory } from "react-router";
-import "./JoblyApp.css";
+import "./static/JoblyApp.css";
 import UserContext from "./UserContext";
 
 function JoblyApp() {
