@@ -9,7 +9,7 @@
 .JoblyContent {
   margin-top: 100px;
   background-color: lightgrey;
-  opacity: .85;
+  opacity: .94;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +44,7 @@
 
 .Home {
   background-color: lightgrey;
-  opacity: .85;
+  opacity: 1;
   display: inline-block;
   padding: 3rem;
   border-radius: 1rem;
